@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title_block %}<title>HomePage</title>{% endblock %}
+    <link rel="stylesheet" type="text/css" href="main.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+
+<body style="background-color:#C0C0C0 ">
+    {% include "header.html" %}
+    <center>
+        <div class="container pt-5">
+            <div id="header">
+                <h1 style="color:cornflowerblue;text-align:center;">Music Butler</h1>
+            </div>
+        </div>
+        {% block body_block %}
+            <h1>Welcome to our Homepage!</h1>
+            <div class="container pt-5">
+                <h2> Want to enjoy different kinds of music? Why not register to be our users now?</h2>
+            </div>
+            {% if query %}
+                <h1>Songs called "{{ query }}"</h1>
+                <h3>
+                {% with results.count as total_results %}
+                    Found {{ total_results }} result{{ total_results|pluralize }}
+                {% endwith %}
+                </h3>
+            {% for song in results %}
+            <h4>
+                <a href="http://127.0.0.1:8000/musicbutler/{{ song.0 }}">{{ song.1 }}</a>
+            </h4>
+            {% empty %}
+            <p>There are no results for your query.</p>
+            {% endfor %}
+                <p><a href="http://127.0.0.1:8000/musicbutler/home">Search again</a></p>
+            {% else %}
+                <h1>Search for songs</h1>
+                <div class="container" style="display: inline-block;">
+                <div class="row" style="display: inline-block;">
+                    <form method="get">
+                        {{ form.as_p }}
+                    <input type="submit" value="Search">
+                    </form>
+
+        </div>
+        </div>
+        </div>
+        {% endif %}
+
+        {% endblock %}
+    </center>
+        <!-- include jquery.js and popper.js -->
+        <script src="{% static 'jquery/jquery-3.5.1.js' %}"></script>
+        <script src="{% static 'popper/popper-1.14.4.js' %}"></script>
+        <!-- import bootstrap js -->
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <hr>
+                    <p>Authors: lty, oyz, yyj, zmy</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <hr>
+                    <p class="text-dark">Contact with us: 15868136503</p>
+                    <p class="text-dark">Music Butler</p>
+                </div>
+            </div>
+        </footer>
+
+</body>
+
+</html>

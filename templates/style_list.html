@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title_block %}<title>styles</title>{% endblock %}
+{% block body_block %}
+<head>
+    <title>Style List</title>
+    <style>
+        ul{
+            list-style:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Style List</h1>
+
+    <ul>
+        {% for style in styles %}
+            <li><a href="/musicbutler/styles/{{ style.id }}/songs/"> {{ style.name }} </a></li>
+        {% endfor %}
+
+    </ul>
+</body>
+{% endblock %}

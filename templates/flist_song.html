@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title_block %}<title>{{ list.2 }}</title>{% endblock %}
+{% block body_block %}
+<h1>{{ list.2 }}</h1>
+    {% for s in song %}
+        <div class="comment">
+            <p class="info">
+                <a href="http://127.0.0.1:8000/musicbutler/{{ s.0 }}/">{{ s.1 }}</a>
+                <a href="{% url 'musicbutler:delete_list_song' s.0 list.0%}">Delete</a>
+            </p>
+        </div>
+    {% empty %}
+        <p>There are no songs.</p>
+    {% endfor %}
+{% endblock %}

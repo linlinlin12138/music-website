@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<head>
+    <title>{{ album.name }}</title>
+    <style>
+        ul{
+            list-style:none;
+        }
+    </style>
+</head>
+<body >
+    <h1>{{ album.name }}</h1>
+    <img src="{{ album.photo__link }}" alt="{{ album.name }} cover">
+    <p>Issue Date：{{ album.release_date }}</p>
+    <p>Company：{{ album.company }}</p>
+    <h2>Song List</h2>
+    <ul>
+  {% for song in songs %}
+    <li>
+        <a href="{{ song.url }}">
+            <img src="{{ song.photo_link }}" alt="{{ song.name }}" style="width: 100px; height: 100px;"/>
+            <br>
+            <a href="http://127.0.0.1:8000/musicbutler/{{ song.song_id }}/">{{ song.name }}</a>
+            <br>
+        </a>
+
+    </li>
+{% endfor %}
+    </ul>
+</body>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title_block %}<title>read_style</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+    <a href="{% url 'musicbutler:add_style' %}">Add a New Style</a>
+        <table border="1" width="700">
+            <tr>
+                <th>Style_ID</th>
+                <th>Name</th>
+
+            </tr>
+            {% for m in page %}
+            <tr>
+                <td>{{ m.0 }}</td>
+                <td>{{ m.1 }}</td>
+                <td>
+                    <a href="{% url 'musicbutler:edit_style' m.0%}">Edit</a>
+                   <a href="{% url 'musicbutler:delete_style' m.0%}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+    </center>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}<title>{{ playlist.name }}</title>{% endblock %}
+{% block body_block %}
+    <div class="product-list">
+            <h2>{{ playlist.1 }}</h2>
+            <h3><a href="http://127.0.0.1:8000/musicbutler/playlist">back</a></h3>
+            {% for s in song %}
+                <div class="item1">
+                    <a href="http://127.0.0.1:8000/musicbutler/{{ s.2 }}/">{{s.1}}<br></a>
+                <p>{{ s.0 }}</p>
+                </div>
+            {% endfor %}
+    </div>
+
+
+ {% endblock %}

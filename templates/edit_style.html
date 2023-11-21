@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title_block %}<title>edit style</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Edit Information</h1>
+        <a href="{% url "musicbutler:read_style" %}">Back</a>
+        <table>
+            <form action="{% url 'musicbutler:edit_style' style.0 %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name", value="{{ style.1 }}">
+                </td>
+            </tr>
+
+
+                <td align="center" colspan="2">
+                    <input type="submit" value="submit">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}w

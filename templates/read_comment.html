@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title_block %}<title>read_comment</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <table border="1" width="700">
+            <tr>
+                <th>Comment ID</th>
+                <th>Content</th>
+                <th>User ID</th>
+                <th>Song ID</th>
+            </tr>
+            {% for c in page %}
+            <tr>
+                <td>{{ c.0 }}</td>
+                <td>{{ c.3 }}</td>
+                <td>{{ c.1 }} </td>
+                <td>{{ c.2 }}</td>
+                <td>
+                    <a href="{% url 'musicbutler:delete_comment' c.0 %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+    </center>
+{% endblock %}

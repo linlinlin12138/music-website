@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title_block %}<title>edit album</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Edit Information</h1>
+        <a href="{% url "musicbutler:read_album" %}">Back</a>
+        <table>
+            <form action="{% url 'musicbutler:edit_album' album.0 %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    <input type="text" name="name", value="{{ album.1 }}">
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                    Photo_link
+                </td>
+                <td>
+                    <input type="text" name="photo_link", value="{{ album.2 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Release Date
+                </td>
+                <td>
+                    <input type="text" name="release_date", value="{{ album.3 }}">
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                    Company
+                </td>
+                <td>
+                    <input type="text" name="company", value="{{ album.4 }}" >
+                </td>
+            </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" value="submit">
+                        <input type="reset" value="reset">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

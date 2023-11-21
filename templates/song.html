@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}<title>{{ song.name }}</title>{% endblock %}
+{% block body_block %}
+    <div class="product-detail">
+        <img src="{{ song.2 }}" width="450" height="500">
+        <h2>{{ song.1 }}</h2>
+        <h3>Singer: {{ singer.1 }}</h3>
+        <p>{{ song.3|linebreaks}}</p>
+        <br>
+    <audio src="http://music.163.com/song/media/outer/url?id={{ link_id }}" controls="controls" align="center"></audio>
+        <br>
+        <br>
+    <form method="post" action="{% url "musicbutler:add_to_favorite" song.0 %}">
+            {% csrf_token %}
+        <tr>
+        <td>
+            Favourite List Name:
+        </td>
+        <td>
+            <input type="text" name="list_name">
+        </td>
+            <td>
+            <input type="submit" value="Add to your favourite list">
+            </td>
+    </tr>
+    <br>
+    <br>
+
+    </form>
+    <br>
+    <br>
+    {% with comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+ {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Comment {{ forloop.counter }} by {{ comment.0 }}
+            </p>
+            {{ comment.1|linebreaks }}
+        </div>
+    {% empty %}
+        <p>There are no comments.</p>
+    {% endfor %}
+    {%  include "comment_form.html" %}
+    <br>
+    <br>
+    </div>
+
+
+
+<br>
+    <br>
+    <br>
+    <br>
+ {% endblock %}

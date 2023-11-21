@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title_block %}<title>read_album</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+    <a href="{% url 'musicbutler:add_album' %}">Add a Album</a>
+        <table border="1" width="700">
+            <tr>
+                <th>Album ID</th>
+                <th>Name</th>
+                <th>Photo Link</th>
+                <th>Release Date</th>
+                <th>Company</th>
+            </tr>
+            {% for l in page %}
+            <tr>
+                <td>{{ l.0 }}</td>
+                <td>{{ l.1 }}</td>
+                <td>{{ l.2 }} </td>
+                <td>{{ l.3 }}</td>
+                <td>{{ l.4 }} </td>
+                <td>
+                    <a href="{% url 'musicbutler:edit_album' l.0 %}">Edit</a>
+                    <a href="{% url 'musicbutler:delete_album' l.0 %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+    </center>
+{% endblock %}

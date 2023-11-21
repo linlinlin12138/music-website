@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title_block %}<title>add song</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Add Information</h1>
+        <a href="{% url 'musicbutler:read' %}">Back</a>
+        <table>
+            <form action="{% url 'musicbutler:add' %}" method="post">
+               {% csrf_token %}
+                <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Photo_link:
+                </td>
+                <td>
+                    <input type="text" name="photo_link">
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Lyric:
+                </td>
+                <td>
+                    <input type="text" name="lyric">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     Audio_link:
+                </td>
+                <td>
+                    <input type="text" name="audio_link" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                     Singer_id:
+                </td>
+                <td>
+                    <input type="text" name="singer_id" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Album_id:
+                </td>
+                <td>
+                    <input type="text" name="album_id" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Style_id:
+                </td>
+                <td>
+                    <input type="text" name="style_id" >
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="add">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

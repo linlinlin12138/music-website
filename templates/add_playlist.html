@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title_block %}<title>add song</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Add Information</h1>
+        <a href="{% url 'musicbutler:read_playlist' %}">Back</a>
+        <table>
+            <form action="{% url 'musicbutler:add_playlist' %}" method="post">
+               {% csrf_token %}
+                <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Photo_link:
+                </td>
+                <td>
+                    <input type="text" name="photo_link">
+                </td>
+            </tr>
+                <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="add">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

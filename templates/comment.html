@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title_block %}<title>Add a comment</title>{% endblock %}
+
+{% block body_block %}
+    {% if comment %}
+        <h2>Your comment has been added.</h2>
+        <p><a href="http://127.0.0.1:8000/musicbutler/{{ song.song_id }}/">Back to the song</a></p>
+    {% else %}
+        {% include "comment_form.html" %}
+    {% endif %}
+{% endblock %}

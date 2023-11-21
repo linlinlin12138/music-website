@@ -1,0 +1,16 @@
+<h2>Add a new comment</h2>
+<br>
+<form action="{% url "musicbutler:song_comment" song.0 %}" method="post">
+    {% csrf_token %}
+    <tr>
+        <td>
+            Content:
+        </td>
+        <td>
+            <input type="text" name="content">
+        </td>
+    </tr>
+    <br>
+    <br>
+ <p><input type="submit" value="Add comment"></p>
+</form>

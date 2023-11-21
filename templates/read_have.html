@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title_block %}<title>read_have</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+    <a href="{% url 'musicbutler:add_have' %}">Add a Song to an existing playlist</a>
+        <table border="1" width="700">
+            <tr>
+                <th>Playlist_ID</th>
+                <th>Song_ID</th>
+            </tr>
+            {% for s in page %}
+            <tr>
+                <td>{{ s.1 }}</td>
+                <td>{{ s.0 }}</td>
+                <td>
+                    <a href="{% url 'musicbutler:delete_have' s.0 s.1%}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+    </center>
+{% endblock %}

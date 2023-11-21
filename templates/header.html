@@ -1,0 +1,71 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1"><img src="{% static 'logo.png' %}" height="50"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read">Song Management</a>
+          {% else %}
+        <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/home">Home <span class="sr-only">(current)</span></a>
+        {% endif %}
+      </li>
+      <li class="nav-item">
+          {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/singer">Singer Management</a>
+          {% else %}
+               <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/Singer">Singer</a>
+          {% endif %}
+      </li>
+      <li class="nav-item">
+          {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/album">Album Management</a>
+          {% else %}
+          <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/album">Album</a>
+          {% endif %}
+      </li>
+      <li class="nav-item">
+           {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/playlist">Playlist Management</a>
+          {% else %}
+        <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/playlist" >Playlist</a>
+          {% endif %}
+      </li>
+     <li class="nav-item">
+          {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/style">Style Management</a>
+          {% else %}
+        <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/styles" >Style</a>
+         {% endif %}
+      </li>
+        <li class="nav-item">
+            {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/comment">Comment Management</a>
+          {% else %}
+        <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/dashboard" >Dashboard</a>
+            {% endif %}
+      </li>
+        <li class="nav-item">
+            <span class="user">
+            {% if request.user.is_authenticated %}
+            Hello {{ request.user.first_name|default:request.user.username }},
+            <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/logout">Logout</a>
+            {% else %}
+            <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/login">Log-in</a>
+            {% endif %}
+            </span>
+        <li class="nav-item">
+            {% if request.user.is_superuser %}
+              <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/read/have">Songs of Playlist Management</a>
+          {% else %}
+        <a class="nav-link" href="http://127.0.0.1:8000/musicbutler/register">Sign up</a>
+            {% endif %}
+      </li>
+      </li>
+    </ul>
+  </div>
+</nav>

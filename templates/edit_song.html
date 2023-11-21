@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title_block %}<title>edit song</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Edit Information</h1>
+        <a href="{% url "musicbutler:read" %}">Back</a>
+        <table>
+            <form action="{% url 'musicbutler:edit' song.0 %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name", value="{{ song.1 }}">
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                    Photo_link
+                </td>
+                <td>
+                    <input type="text" name="photo_link", value="{{ song.2 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Lyric:
+                </td>
+                <td>
+                    <input type="text" name="lyric", value="{{ song.3 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Audio_link:
+                </td>
+                <td>
+                    <input type="text" name="audio_link", value="{{ song.4 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Singer_id:
+                </td>
+                <td>
+                    <input type="text" name="singer_id", value="{{ song.5 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Album_id:
+                </td>
+                <td>
+                    <input type="text" name="album_id", value="{{ song.6 }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Style_id:
+                </td>
+                <td>
+                    <input type="text" name="style_id", value="{{ song.7 }}" >
+                </td>
+            </tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="submit">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title_block %}<title>Dashboard</title>{% endblock %}
+{% block body_block %}
+    <h1>Dashboard</h1>
+    <p>Welcome to your dashboard.</p>
+    <h2>Your favourite list</h2>
+    {% for list in user_list %}
+        <div class="comment">
+            <p class="info">
+                <a href="/musicbutler/favouritelist/{{ list.1 }}/{{ list.0}}/">{{ list.2 }}</a>
+                <a href="{% url 'musicbutler:delete_list' list.0 %}">Delete</a>
+            </p>
+        </div>
+    {% empty %}
+        <p>There are no favourite list.</p>
+    {% endfor %}
+    <h2><a href="/musicbutler/create/">create a new favorite list</a></h2>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}<title>Playlist</title>{% endblock %}
+{% block body_block %}
+    <h2>Playlists</h2>
+        <h3>Find your favourite songs by various playlists!</h3>
+    <div class="product-list" id="main">
+        {% for li in playlists %}
+            <div style="width:25%" class="item1">
+             <a href="/musicbutler/playlist/{{ li.0 }}">
+                 <img src="{{ li.2 }}" width="150px" margin-bottom="8px">
+             </a>
+             <p  style="width: 320px"> <a href=/musicbutler/playlist/{{ li.0 }}>{{ li.1}}</a></p>
+            </div>
+
+        {% endfor %}
+
+{% endblock %}

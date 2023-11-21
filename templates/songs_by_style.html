@@ -1,0 +1,58 @@
+<head>
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+         th {
+             background-color: #f2f2f2;
+         }
+    </style>
+</head>
+{% extends "base.html" %}
+{% block title_block %}<title>style_name</title>{% endblock %}
+{% block body_block %}
+<body>
+    <h1>Songs by Style: {{ style.name }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Song Name</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in page %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="http://127.0.0.1:8000/musicbutler/{{ song.id }}/"> {{ song.name }}</td>
+                    <td>
+                        {% if song.image_url %}
+                            <img src="{{ song.image_url }}" alt="Image" width="100">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No songs found for this style.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+</body>
+{% endblock %}

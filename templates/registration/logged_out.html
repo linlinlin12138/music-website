@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Logged out{% endblock %}
+{% block body_block %}
+ <h1>Logged out</h1>
+ <p>
+    You have been successfully logged out.
+    You can <a href="{% url "musicbutler:login" %}">log-in again</a>.
+ </p>
+{% endblock %}

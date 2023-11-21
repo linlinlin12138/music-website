@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title_block %}<title>register</title>{% endblock %}
+{% block body_block %}
+    <h1>Create an account</h1>
+    <p>Please, sign up using the following form:</p>
+    <div class="container-fluid">
+        <div class="row">
+    <form method="post">
+        <div class="container">
+            {{ user_form.as_p}}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+        </div>
+    </form>
+            </div>
+    </div>
+{% endblock %}

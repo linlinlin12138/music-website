@@ -1,0 +1,69 @@
+<head>
+    <style>
+        .guide {
+            width: 95%;
+            height: 40px;
+            border-top: 4px black;
+            border-bottom: 1px black;
+            background-color: #545454;
+            font-family: 'Ubuntu', serif;
+        }
+        .g {
+            color:whitesmoke;
+            list-style:none;
+            text-align:left;
+        }li{float:left}
+        a{
+            text-decoration: none;
+        }
+        .cover img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+{% extends "base.html" %}
+{% block title_block %}<title>{{ singer_info.2 }}</title>{% endblock %}
+{% block body_block %}
+<div>
+<div class = "title" style = width:100%;height:100px>
+<br>
+<h2>Detail</h2>
+</div>
+    <div class="guide">
+    <ul class="g" {# style="text-align: center;" #}>
+        <li><a href="http://127.0.0.1:8000/musicbutler/CMS/" style="color:whitesmoke">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChinese Male Singers&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+        <li><a href="http://127.0.0.1:8000/musicbutler/CFMS/" style="color:whitesmoke">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChinese Female Singers&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+        <li><a href="http://127.0.0.1:8000/musicbutler/CB/" style="color:whitesmoke">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChinese Bands&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+        <li><a href="http://127.0.0.1:8000/musicbutler/WMS/" style="color:whitesmoke">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWestern Male Singers&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+        <li><a href="http://127.0.0.1:8000/musicbutler/WFS/" style="color:whitesmoke">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWestern Female Singers&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+    </ul>
+</div>
+</div>
+    <br>
+    <div class="product-detail">
+        <img src="{{ singer_info.2 }}" width="400" height="350">
+        <h2>{{ singer_info.1 }}</h2>
+        <p>{{ singer_info.3|linebreaks}}</p>
+    </div>
+    <br>
+    <br>
+    <br>
+<hr>
+    <br>
+    <br>
+    <br>
+    <div class="product-list" id="main">
+         {%  for item in songInfo%}
+            <div style="width:25%" class="item1">
+             <a href="http://127.0.0.1:8000/musicbutler/{{ item.0 }}">
+                 <img src="{{ item.2 }}" width="150" height="150">
+             </a>
+                <p><a href="http://127.0.0.1:8000/musicbutler/{{ item.0 }}"><em>{{ item.1 }}</em></a></p>
+            </div>
+    {% endfor %}
+
+ </div>
+{% endblock %}
+
